@@ -83,12 +83,21 @@
                             <form action="{{ route('wishlist.store') }}" method="post">
                                 @csrf
                                 <input type="hidden" name="anime_id" value="{{ $animeku->id }}">
-                                <input type="hidden" name="user_id" value="{{auth()->check() &&  auth()->user()->id }}">
+                                <input type="hidden" name="user_id"
+                                    value="{{ auth()->check() && auth()->user()->id }}">
                                 <button type="submit" class="follow-btn fa fa-heart-o">
                                     Follow</button>
                             </form>
 
-                            <a href="{{ url('#') }}" class="watch-btn"><span>Watch Now</span></i></a>
+
+
+                            <div class="anime__details__episodes m-3 mr-auto" style="" id="episode_muncul">
+@foreach ($animeku_episode as $row)
+    @if ($row->episode) <!-- Pastikan relasi episode ada -->
+        <a href="{{ route('manga_mu', $row->id) }}">EP {{ $row->episode->episode_number }}</a>
+    @endif
+@endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,11 +109,11 @@
                     <div class="section-title">
                         <h5>Reviews</h5>
                     </div>
-                        @if (session()->has('success_comment'))
-                            <div class="alert alert-success">
-                                {{ session('success_comment') }}
-                            </div>
-                        @endif
+                    @if (session()->has('success_comment'))
+                        <div class="alert alert-success">
+                            {{ session('success_comment') }}
+                        </div>
+                    @endif
                     @foreach ($animeku->comments as $comment)
                         <div class="anime__review__item">
                             <div class="anime__review__item__pic">
@@ -113,14 +122,18 @@
                                     <img src="{{ \Illuminate\Support\Facades\Storage::url($comment->user->profile) }}"
                                         alt="Gambar Account">
                                 @else
-                                    <img src="{{ asset('/anime/img/profile/profile.png') }}" alt="Gambar Account Tidak Ada">
+                                    <img src="{{ asset('/anime/img/profile/profile.png') }}"
+                                        alt="Gambar Account Tidak Ada">
                                 @endif
                             </div>
                             <div class="anime__review__item__text blog__details__comment__item__text">
-                                <h6>{{ $comment->user->name }}  <span>{{ $comment->created_at->diffForHumans() }}</span></h6>
+                                <h6>{{ $comment->user->name }}
+                                    <span>{{ $comment->created_at->diffForHumans() }}</span>
+                                </h6>
                                 <p>{{ $comment->content }}</p>
-                                 <button class="btn btn-secondary btn-sm mt-2 rounded" id="replay_muncul{{ $comment->id }}"
-                                onclick="replay_muncul({{ $comment->id }})">Reply</button>
+                                <button class="btn btn-secondary btn-sm mt-2 rounded"
+                                    id="replay_muncul{{ $comment->id }}"
+                                    onclick="replay_muncul({{ $comment->id }})">Reply</button>
                             </div>
                         </div>
                     @endforeach
@@ -171,15 +184,9 @@
     </div>
 </section>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            $("#replay_muncul").click(function() {
-                $("#replay_muncul").show("slow");
-                $("#replay_muncul").hide("slow");
-            });
-        });
-    </script>
+
+
+
 <!-- Anime Section End -->
 @endsection

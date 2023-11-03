@@ -81,11 +81,12 @@ Route::get('/AnimeKu_list', function () {
 })->name('AnimeKu_list');
 
 Route::get('/AnimeKu_detail/{id}', function (string $id) {
-    $animeku=AnimeKu::findOrFail($id);
-    $allanime=AnimeKu::count();
+    $animeku= AnimeKu::findOrFail($id);
+    $animeku_episode= AnimeKu ::all();
+    $allanime= AnimeKu::count();
 
     
-    return view('anim_category.category.anim_detail', compact('animeku', 'allanime'));
+    return view('anim_category.category.anim_detail', compact('animeku', 'allanime', 'animeku_episode'));
 })->name('AnimeKu_detail');
 
 
@@ -203,6 +204,16 @@ Route::get('/anime_coming_soon', [BlogAnimeController::class,"create"])->name('a
 
 // commants create
 Route::post('/commants_create/{id}', [CommantController::class,"store"])->name('commants_create'); // halaman create anime saja
+
+
+//anime manga episode cetak 
+Route::get('/manga_mu/{id}', function (string $id) {
+    $animeku=AnimeKu::findOrFail($id);
+    $animeku_manga=AnimeKu::all();
+    // $allanime=AnimeKu::count();
+
+    return view('anim_category.animeku_manga_cetak.animeku_manga', compact('animeku', 'animeku_manga'));
+})->name('manga_mu');
 
 
 
