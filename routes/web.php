@@ -34,10 +34,11 @@ use App\Http\Controllers\Episode_anime_Controller;
 */
 
 Route::get('/', function () {
+    $allanime= AnimeKu::count();
     $animeku = AnimeKu::all();
 
     // return $animeku;
-    return view('welcome', compact('animeku'));
+    return view('welcome', compact('animeku', 'allanime'));
 })->name('home');
 
 Route::get('/category', function () {

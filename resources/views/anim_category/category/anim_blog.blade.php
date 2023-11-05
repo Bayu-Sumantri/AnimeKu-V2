@@ -132,7 +132,8 @@
                 myAlert.classList.toggle('d-none');
 
                 // reset  form 
-                from.reset();
+                form.reset();
+
 
                 console.log('Succcess!', response);
             })
