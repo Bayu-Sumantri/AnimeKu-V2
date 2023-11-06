@@ -104,8 +104,7 @@
 </section>
 
 <script>
-    const scriptURL =
-        'https://script.google.com/macros/s/AKfycbznNsYu40cB6r9-fZOm-yHCZ4EEiroZjyTScp1pZgbdLRnuVZE_4eiPpvuwrH348z-l/exec'
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbznNsYu40cB6r9-fZOm-yHCZ4EEiroZjyTScp1pZgbdLRnuVZE_4eiPpvuwrH348z-l/exec'
     const form = document.forms['data-comment-animeku'];
 
     const btnkirim = document.querySelector('.btn-kirim');
@@ -116,7 +115,7 @@
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         // ketika tombol submit diklik
-        // tapilkan tombol loading tampilkan toblo loading
+        // tapilkan tombol loading tampilkan tombol loading
         btnkirim.classList.toggle('d-none');
         btnLoading.classList.toggle('d-none');
         fetch(scriptURL, {

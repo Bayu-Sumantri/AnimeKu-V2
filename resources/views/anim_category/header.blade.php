@@ -61,21 +61,9 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="{{ route('home') }}">Homepage</a></li>
-                                <li><a href="{{ url('/category') }}">All Anime <span
-                                            class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-                                        <li><a href="{{ url('/category') }}">All Anime</a></li>
-                                        <li><a href="{{ url('/anim_detail') }}">Anime Details</a></li>
-                                        <li><a href="{{ url('/anim_watch') }}">Anime Watching</a></li>
-                                        <li class="{{ request()->routeIs('anim') ? 'active' : '' }}"><a
-                                                href="{{ url('/anim_blog') }}">Blog Details</a></li>
-                                        <li><a href="{{ route('register') }}">Sign Up</a></li>
-                                        <li><a href="{{ route('login') }}">Login</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{ url('/category') }}">All Anime</a></li>
                                 <li><a class="{{ request()->routeIs('anim_blog') ? 'active' : '' }}"
                                         href="{{ url('/anim_blog') }}">Our Blog</a></li>
-                                <li><a href="{{ url('#') }}">Contacts</a></li>
                             </ul>
                         </nav>
                     </div>
