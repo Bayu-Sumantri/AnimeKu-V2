@@ -32,6 +32,29 @@ code .
 ```
 
 
+**Konfigurasi Environment**
+
+```shell
+cp .env.example .env
+```
+
+**Generate Key Aplikasi**
+
+```shell
+php artisan key:generate
+```
+
+**Instalasi Dependensi**
+
+```shell
+composer install
+```
+
+```shell
+npm install
+```
+
+
 **Setting Database Config in Env**
 
 ```
